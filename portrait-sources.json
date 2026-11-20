@@ -1,0 +1,131 @@
+[
+  {
+    "name": "Ido Greenberg",
+    "affiliations": [
+      "NVIDIA"
+    ],
+    "profile": "https://research.nvidia.com/labs/par/author/ido-greenberg.html",
+    "image": "assets/people/ido-greenberg.png",
+    "image_source": "Original NVIDIA Research portrait, supplied by Ido Greenberg; restored without modifications",
+    "external_image": false
+  },
+  {
+    "name": "Gal Chechik",
+    "affiliations": [
+      "NVIDIA",
+      "Bar-Ilan University"
+    ],
+    "profile": "https://research.nvidia.com/labs/par/author/gal-chechik.html",
+    "image": "assets/people/gal-chechik.jpeg",
+    "image_source": "User-provided copy of NVIDIA Research Tel-Aviv Lab portrait",
+    "external_image": false,
+    "original_image_url": "https://research.nvidia.com/labs/par/author/gal-chechik/avatar_hu1d0a55ce5cad5f387ff9aa3dd1d47e6d_6780_270x270_fill_q90_lanczos_center.jpeg"
+  },
+  {
+    "name": "Shie Mannor",
+    "affiliations": [
+      "Technion",
+      "NVIDIA"
+    ],
+    "profile": "https://research.nvidia.com/labs/par/author/shie-mannor.html",
+    "image": "assets/people/shie-mannor.jpg",
+    "image_source": "User-provided copy of NVIDIA Research Tel-Aviv Lab portrait",
+    "external_image": false,
+    "original_image_url": "https://research.nvidia.com/labs/par/author/shie-mannor/avatar_hu555d59b306d317864a70d783982f992b_5647_270x270_fill_q90_lanczos_center.jpg"
+  },
+  {
+    "name": "Gal Dalal",
+    "affiliations": [
+      "NVIDIA"
+    ],
+    "profile": "https://research.nvidia.com/labs/par/author/gal-dalal.html",
+    "image": "assets/people/gal-dalal.png",
+    "image_source": "User-provided copy of NVIDIA Research Tel-Aviv Lab portrait",
+    "external_image": false,
+    "original_image_url": "https://research.nvidia.com/labs/par/author/gal-dalal/avatar_hu1656bd97d616b161b72eac9819d64ada_213536_270x270_fill_lanczos_center_3.png"
+  },
+  {
+    "name": "Assaf Hallak",
+    "affiliations": [
+      "NVIDIA"
+    ],
+    "profile": "https://research.nvidia.com/labs/par/author/assaf-hallak.html",
+    "image": "assets/people/assaf-hallak.png",
+    "image_source": "User-provided copy of NVIDIA Research Tel-Aviv Lab portrait",
+    "external_image": false,
+    "original_image_url": "https://research.nvidia.com/labs/par/author/assaf-hallak/avatar_hu026da7b364c212cfd26c21f00d798fd6_286634_270x270_fill_lanczos_center_3.png"
+  },
+  {
+    "name": "Eli Meirom",
+    "affiliations": [
+      "NVIDIA"
+    ],
+    "profile": "https://research.nvidia.com/labs/par/author/eli-meirom.html",
+    "image": "assets/people/eli-meirom.jpg",
+    "image_source": "User-provided copy of NVIDIA Research Tel-Aviv Lab portrait",
+    "external_image": false,
+    "original_image_url": "https://research.nvidia.com/labs/par/author/eli-meirom/avatar_hu855bbe0a9c47ac557e5b09db74fa3b06_106497_270x270_fill_q90_lanczos_center.jpg"
+  },
+  {
+    "name": "Chen Tessler",
+    "affiliations": [
+      "NVIDIA"
+    ],
+    "profile": "https://research.nvidia.com/labs/par/author/chen-tessler.html",
+    "image": "assets/people/chen-tessler.png",
+    "image_source": "User-provided copy of NVIDIA Research Tel-Aviv Lab portrait",
+    "external_image": false,
+    "original_image_url": "https://research.nvidia.com/labs/par/author/chen-tessler/avatar_hu289102f5beee65a5261598767eabaa5c_277653_270x270_fill_lanczos_center_3.png"
+  },
+  {
+    "name": "Lior Shani",
+    "affiliations": [
+      "Google"
+    ],
+    "profile": "https://www.linkedin.com/in/liorshani/",
+    "image": "assets/people/lior-shani.jpg",
+    "image_source": "user-provided",
+    "external_image": false
+  },
+  {
+    "name": "Aviv Rosenberg",
+    "affiliations": [
+      "Google"
+    ],
+    "profile": "https://www.linkedin.com/in/aviv-rosenberg-2a6222149/",
+    "image": "assets/people/aviv-rosenberg.jpg",
+    "image_source": "user-provided",
+    "external_image": false
+  },
+  {
+    "name": "Oran Lang",
+    "affiliations": [
+      "Google"
+    ],
+    "profile": "https://www.linkedin.com/in/oran-lang-166b8610/",
+    "image": "assets/people/oran-lang.jpg",
+    "image_source": "user-provided",
+    "external_image": false
+  },
+  {
+    "name": "Yonathan Efroni",
+    "affiliations": [
+      "Tel Aviv University",
+      "AAI"
+    ],
+    "profile": "https://www.linkedin.com/in/yonathan-efroni-7b731373/",
+    "image": "assets/people/yonathan-efroni.jpg",
+    "image_source": "user-provided",
+    "external_image": false
+  },
+  {
+    "name": "Tom Shenkar",
+    "affiliations": [
+      "Mentee Robotics"
+    ],
+    "profile": "https://www.linkedin.com/in/tom-shenkar-993799195/",
+    "image": "assets/people/tom-shenkar.jpg",
+    "image_source": "user-provided",
+    "external_image": false
+  }
+]

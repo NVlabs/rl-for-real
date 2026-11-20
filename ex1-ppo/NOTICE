@@ -1,0 +1,22 @@
+RL-for-Real course exercises: toy-ppo
+Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This project is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Third-party software
+--------------------
+This repository does not include, copy, modify or redistribute any third-party
+source code, binaries, model weights or datasets. All files are authored by NVIDIA.
+
+The dependencies listed in environment.yml are installed separately by the user
+from their upstream sources and are governed by their own licenses:
+
+- python: PSF-2.0 (https://docs.python.org/3/license.html)
+- numpy: BSD-3-Clause (https://github.com/numpy/numpy/blob/main/LICENSE.txt)
+- matplotlib: Matplotlib License, PSF-based (https://matplotlib.org/stable/project/license.html)
+- pillow: MIT-CMU (https://github.com/python-pillow/Pillow/blob/main/LICENSE)
+- libstdcxx-ng: GPL-3.0 with GCC Runtime Library Exception (https://www.gnu.org/licenses/gcc-exception-3.1.html)
+- gymnasium: MIT (https://github.com/Farama-Foundation/Gymnasium/blob/main/LICENSE)
+  - pygame (classic-control extra): LGPL-2.1 (https://github.com/pygame/pygame/blob/main/docs/LGPL.txt)
+  - box2d-py (box2d extra): zlib (https://github.com/openai/box2d-py/blob/master/LICENSE)
+- torch: BSD-3-Clause (https://github.com/pytorch/pytorch/blob/main/LICENSE)

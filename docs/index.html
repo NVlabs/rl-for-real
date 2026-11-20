@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Free RL for Real course materials, organized by Ido Greenberg and Gal Chechik at NVIDIA. Reinforcement learning foundations, applications, and hands-on exercises.">
+<title>RL for Real — Reinforcement Learning in Practice</title>
+<style>:root{--paper:#fff;--ink:#1e1e1e;--lime:#76b900;--muted:#606060;--line:#dedede}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1rem/1.6 Arial,Helvetica,sans-serif}
+a{color:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--lime);outline-offset:5px}
+button,input{font:inherit}
+button{cursor:pointer}
+button:disabled{cursor:default}
+img{max-width:100%}
+[hidden]{display:none!important}
+.wrap{max-width:1240px;margin:auto;padding:0 40px}
+.visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+header{min-height:88px;display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line)}
+.wordmark{font-weight:800;letter-spacing:-1px;text-decoration:none;font-size:24px;white-space:nowrap}
+nav{display:flex;gap:28px;font-size:.9375rem}
+nav a{text-decoration:none}
+nav a:hover{text-decoration:underline;text-underline-offset:4px}
+.hero{display:grid;grid-template-columns:1.08fr 1fr;gap:44px;align-items:center;padding:68px 0 56px}
+.eyebrow{font-size:.75rem;font-weight:700;line-height:1.5;letter-spacing:1.8px;text-transform:uppercase}
+h1{font-size:clamp(3.5rem,6vw,5rem);line-height:1.03;letter-spacing:-3.5px;margin:22px 0 24px}
+h1 em{font-style:normal;text-decoration:underline;text-decoration-color:var(--lime);text-decoration-thickness:5px;text-underline-offset:11px}
+.lead{font-size:1.1875rem;line-height:1.65;max-width:530px;color:#555;margin:0 0 24px}
+.organizer-byline{font-size:1rem;margin:0 0 26px;line-height:1.6}
+.organizer-byline>span{display:block;font-size:.875rem;color:var(--muted);margin-bottom:2px}
+.organizer-byline strong{font-size:1rem}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:14px;background:var(--lime);color:#000;padding:12px 18px;border:1px solid var(--lime);border-radius:5px;text-decoration:none;font-weight:700;font-size:.9375rem;min-height:48px}
+.cta:hover{box-shadow:0 0 0 1px currentColor;text-decoration:underline;text-underline-offset:4px}
+.hero-image{margin:0;min-width:0}
+.hero-photo-crop{overflow:hidden;border-radius:7px;height:360px;background:#f5f5f5}
+.hero-photo-crop img{display:block;width:100%;height:100%;object-fit:cover;object-position:53% 76%;transform:scale(1.24);transform-origin:53% 83%}
+.caption{font-size:.875rem;line-height:1.5;color:var(--muted);margin-top:12px}
+.course-overview{padding-top:34px;border-top:1px solid var(--line);margin-bottom:64px;scroll-margin-top:28px}
+.section-head{display:flex;justify-content:space-between;gap:24px;align-items:end}
+.section-head h2{font-size:2.375rem;line-height:1.18;letter-spacing:-1.1px;margin:8px 0 0}
+.section-head p{font-size:.875rem;color:var(--muted);margin:0 0 4px}
+.overview-lead{font-size:1.1875rem;line-height:1.7;max-width:920px;color:#555;margin:22px 0 30px}
+.course-facts{display:grid;grid-template-columns:1fr 1fr;column-gap:48px;row-gap:28px;margin-bottom:36px}
+.course-facts>div{border-top:1px solid var(--line);padding-top:20px}
+.course-facts h3{font-size:1.0625rem;line-height:1.45;margin:0 0 9px}
+.course-facts p{font-size:1rem;color:#555;margin:0;line-height:1.7}
+.course-motivation{display:grid;grid-template-columns:1fr 1.75fr;gap:56px;border-top:1px solid var(--line);padding-top:32px}
+.course-motivation h3{font-size:1.625rem;line-height:1.3;letter-spacing:-.6px;margin:0;max-width:290px}
+.course-motivation p{color:#555;font-size:1rem;line-height:1.75;margin:0 0 16px}
+.course-motivation p:last-child{margin-bottom:0}
+.organizer-note{border-left:3px solid var(--lime);padding-left:22px;margin-top:28px}
+.course-motivation .note-signature{font-size:.875rem;font-weight:700;color:var(--ink);margin-top:18px}
+.institutions{margin:0 0 64px;padding:36px;background:#fff;border:1px solid var(--line);border-radius:8px;scroll-margin-top:28px}
+.institutions h2{font-size:1.875rem;line-height:1.25;letter-spacing:-.7px;margin:12px 0 24px}
+.institution-grid{display:flex;flex-wrap:wrap;justify-content:center;column-gap:26px;row-gap:24px;margin:32px 0 36px}
+.institution{flex:0 0 calc((100% - 78px)/4);min-width:0;text-align:center}
+.logo-box{height:124px;display:flex;align-items:center;justify-content:center;margin:0 0 12px;padding:10px}
+.logo-box img{max-width:100%;max-height:94px;width:auto;height:auto;object-fit:contain}
+.institution-google .logo-box img{max-width:132px;max-height:58px}
+.institution-bar-ilan .logo-box{padding:0}
+.institution-bar-ilan .logo-box img{max-height:124px;max-width:150px}
+.institution-tau .logo-box img,.institution-technion .logo-box img{max-width:165px}
+.institution-text-name{font-weight:700;font-size:1.625rem;line-height:1.2}
+.institution-label{display:block;font-size:.875rem;color:var(--muted)}
+.institution-role{display:block;min-height:22px;margin-top:4px;font-size:.875rem;color:#555}
+.teaching-team{padding-top:30px;border-top:1px solid var(--line)}
+.teaching-team h3{font-size:1.5rem;margin:0 0 28px;letter-spacing:-.3px}
+.faculty-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px 24px}
+.faculty-person{min-width:0;display:flex;align-items:center;gap:15px}
+.headshot{position:relative;display:block;flex:0 0 88px;width:88px;height:88px;border-radius:50%;overflow:hidden;background:#eee;text-decoration:none}
+.portrait-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:24px;letter-spacing:1px;color:#666;font-weight:700}
+.headshot img{position:relative;display:block;width:100%;height:100%;object-fit:cover}
+.faculty-copy{min-width:0}
+.faculty-copy strong{display:block;font-size:1rem;line-height:1.4}
+.faculty-copy strong a{text-decoration:none}
+.faculty-copy strong a:hover{text-decoration:underline;text-underline-offset:3px}
+.faculty-copy>span{display:block;font-size:.875rem;line-height:1.5;color:var(--muted);margin-top:4px}
+.faculty-copy .faculty-role{font-size:.875rem;color:#555;margin-top:5px}
+#lectures{scroll-margin-top:28px}
+.tools{display:flex;justify-content:flex-end;gap:20px;margin:28px 0 0;padding-bottom:20px;border-bottom:1px solid var(--ink)}
+input[type=search]{border:1px solid #b7b7b7;background:white;padding:11px 14px;border-radius:5px;width:360px;max-width:100%;font-size:1rem;min-height:48px}
+.lecture{display:grid;grid-template-columns:65px minmax(0,1fr) 190px;gap:18px;padding:28px 0;border-bottom:1px solid var(--line);scroll-margin-top:28px}
+.number{font-size:1rem;color:#666;padding-top:4px;font-family:monospace}
+.lecture h3{font-size:1.375rem;line-height:1.3;margin:0 0 9px;letter-spacing:-.3px}
+.speaker{font-size:1rem;font-weight:700;margin:0 0 8px}
+.speaker-affiliation{display:block;font-weight:400;color:var(--muted);font-size:.875rem;margin:3px 0 0}
+.desc{font-size:1rem;color:var(--muted);margin:0;max-width:650px}
+.resources{display:flex;flex-direction:column;gap:10px;align-items:flex-end;justify-content:center}
+.resource{font-size:.9375rem;font-weight:700;text-decoration:none;border:1px solid #ececec;border-radius:4px;padding:9px 14px;background:#ececec;min-height:44px;white-space:nowrap}
+.resource:hover{background:#dedede;border-color:#dedede}
+.resource-video{background:var(--lime);border-color:var(--lime);color:#000}
+.resource-video:hover{background:#6aa600;border-color:#6aa600}
+.lecture .resource-video{background:#dfeec4;border-color:#dfeec4}
+.lecture .resource-video:hover{background:#cfe5a6;border-color:#cfe5a6}
+.resource span{margin-left:15px}
+.recording-note{font-size:.9375rem;color:var(--muted);max-width:760px;margin:18px 0 0;line-height:1.6}
+.recording-note strong{color:var(--ink)}
+.section-head .resource{display:inline-flex;align-items:center}
+.pending{font-size:.875rem;color:var(--muted)}
+.unavailable{text-align:right}
+.empty{padding:30px 0;color:var(--muted)}
+.practice{margin:72px 0;background:var(--ink);color:white;border-radius:8px;padding:42px;scroll-margin-top:28px}
+.practice .eyebrow{color:var(--lime)}
+.practice h2{font-size:2.375rem;line-height:1.2;letter-spacing:-1px;margin:12px 0}
+.practice-heading>p{color:#ddd;font-size:1rem;margin:0}
+.exercise-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:34px}
+.exercise{border-top:1px solid #666;padding-top:24px;display:flex;flex-direction:column;align-items:flex-start}
+.exercise h3{font-size:1.375rem;line-height:1.3;margin:0 0 14px}
+.exercise h3 a{text-decoration:none}
+.exercise h3 a:hover{text-decoration:underline;text-underline-offset:4px}
+.exercise p{font-size:1rem;color:#ddd;margin:0 0 24px;line-height:1.65}
+.exercise-link{font-size:.9375rem;font-weight:700;margin-top:auto;text-decoration:none;display:inline-flex;gap:16px;align-items:center;min-height:44px}
+.exercise-link span{color:var(--lime)}
+.exercise-link:hover{text-decoration:underline;text-underline-offset:4px}
+.course-gallery{margin:0 0 64px}
+.photo-carousel{margin-top:28px}
+.photo-stage{display:grid;background:#f3f3f3;border-radius:8px;overflow:hidden;isolation:isolate}
+.photo-slide{grid-area:1 / 1;margin:0;min-width:0;opacity:0;visibility:hidden;pointer-events:none;transition:opacity 1.2s cubic-bezier(.4,0,.2,1),visibility 0s linear 1.2s}
+.photo-slide.is-active{opacity:1;visibility:visible;pointer-events:auto;z-index:1;transition:opacity 1.2s cubic-bezier(.4,0,.2,1)}
+.photo-slide img{display:block;width:100%;height:540px;object-fit:contain;background:#f0f0f0}
+.photo-slide figcaption{font-size:.875rem;color:#555;padding:14px 20px;background:#f5f5f5}
+.carousel-controls{display:flex;align-items:center;gap:24px;justify-content:space-between;margin-top:18px;flex-wrap:wrap}
+.carousel-buttons{display:flex;align-items:center;gap:10px}
+.carousel-buttons button{min-width:44px;min-height:44px;padding:9px 14px;border:1px solid #aaa;background:#fff;color:var(--ink);border-radius:5px;font-size:1rem}
+.carousel-buttons button:hover{background:#f5f5f5}
+.photo-toggle{min-width:76px!important}
+.photo-dots{display:flex;align-items:center;gap:0;flex-wrap:wrap;justify-content:center}
+.photo-dot{position:relative;border:0;background:transparent;width:26px;height:44px;padding:0}
+.photo-dot:after{content:"";display:block;width:9px;height:9px;margin:auto;border-radius:50%;background:#b5b5b5}
+.photo-dot[aria-current=true]:after{background:var(--ink);width:11px;height:11px}
+.photo-count{font-size:.875rem;color:var(--muted);min-width:48px;text-align:right;font-variant-numeric:tabular-nums}
+footer{border-top:1px solid var(--line);padding:26px 0 36px;display:flex;justify-content:space-between;gap:20px;font-size:.875rem;color:var(--muted)}
+@media(max-width:1040px){.wrap{padding:0 30px}.hero{gap:30px}h1{font-size:4rem;letter-spacing:-3px}.hero-actions{flex-direction:column;align-items:flex-start}.hero-photo-crop{height:340px}.faculty-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.course-motivation{gap:32px;grid-template-columns:1fr 2fr}.institution-label{font-size:.875rem}.photo-slide img{height:460px}.photo-dots{gap:0}.photo-dot{width:23px}}
+@media(max-width:760px){.wrap{padding:0 22px}header{min-height:76px;gap:12px}.wordmark{font-size:22px}nav{gap:16px;font-size:.875rem}.hero{grid-template-columns:1fr;padding:38px 0 42px;gap:30px}h1{font-size:4rem}.lead{max-width:none;font-size:1.125rem}.hero-actions{flex-direction:row}.hero-photo-crop{height:310px}.caption{font-size:.875rem}.section-head{display:block}.section-head h2{font-size:2rem}.section-head p,.section-head .resource{margin-top:16px}.course-overview{padding-top:28px;margin-bottom:44px}.overview-lead{font-size:1.125rem;margin-top:20px}.course-facts{grid-template-columns:1fr;gap:24px;margin-bottom:28px}.course-motivation{grid-template-columns:1fr;gap:20px;padding-top:26px}.course-motivation h3{max-width:none;font-size:1.5rem}.organizer-note{padding-left:18px}.institutions{padding:24px 20px;margin-bottom:44px}.institutions h2{font-size:1.625rem}.institution-grid{column-gap:18px;row-gap:22px}.institution{flex-basis:calc((100% - 18px)/2)}.logo-box{height:112px}.institution-bar-ilan .logo-box img{max-height:112px;max-width:140px}.institution-tau .logo-box img,.institution-technion .logo-box img{max-width:100%}.institution-google .logo-box img{max-width:120px}.institution-role{min-height:0}.institution-role:empty{display:none}.faculty-grid{gap:30px 16px}.faculty-person{flex-direction:column;text-align:center;gap:12px}.headshot{flex:0 0 88px}.faculty-copy strong{font-size:1rem}.faculty-copy>span{font-size:.875rem}.tools{justify-content:stretch;margin-top:22px}.tools input{width:100%}.lecture{grid-template-columns:44px minmax(0,1fr);gap:12px;padding:26px 0}.lecture h3{font-size:1.25rem}.resources{grid-column:2;align-items:center;justify-content:flex-start;flex-direction:row;flex-wrap:wrap;gap:12px}.unavailable{text-align:left}.practice{padding:30px 24px;margin:48px 0}.practice h2{font-size:2rem}.exercise-grid{grid-template-columns:1fr;gap:26px;margin-top:28px}.exercise{padding-top:22px}.exercise p{margin-bottom:12px}.exercise h3{font-size:1.375rem}.course-gallery{margin-bottom:44px}.photo-slide img{height:330px}.photo-slide figcaption{padding:12px 14px}.carousel-controls{gap:10px}.photo-dots{order:3;flex:0 0 100%;justify-content:flex-start}.photo-dot{width:27px}.photo-count{margin-left:auto}footer{font-size:.875rem}}
+@media(max-width:390px){.wrap{padding:0 18px}nav{gap:12px}.wordmark{font-size:21px}h1{font-size:3.45rem;letter-spacing:-2.7px}.hero-photo-crop{height:250px}.cta{padding:11px 15px}.institutions{padding:22px 16px}.institution-google .logo-box img{max-width:100%}.institution-bar-ilan .logo-box img{max-width:100%}.faculty-grid{column-gap:12px}.lecture{grid-template-columns:38px minmax(0,1fr);gap:8px}.number{font-size:.875rem}.photo-slide img{height:280px}.photo-dot{width:24px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+
+.institution-aai .logo-box a{display:flex;align-items:center;justify-content:center;width:100%;height:100%;text-decoration:none}
+.institution-aai .logo-box img{width:180px;max-width:100%;max-height:64px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><a class="wordmark" href="#">RL <b>for</b> Real<span style="color:#76b900">.</span></a><nav aria-label="Main navigation"><a href="#people">People</a><a href="#lectures">Lectures</a><a href="#practice">Practice</a></nav></header><main><section class="hero"><div>
+<div class="eyebrow">NVIDIA · Tel Aviv · October 2026</div>
+<h1>Reinforcement<br>learning.<br><em>For real.</em>
+</h1>
+<p class="lead">A five-day, in-person course for PhD students in machine learning, held at NVIDIA’s offices in Tel Aviv in October 2026. The course materials are now being shared freely online.</p>
+<p class="organizer-byline"><span>Course organizers</span><strong>Ido Greenberg &amp; Gal Chechik</strong></p>
+<div class="hero-actions">
+<a class="cta" href="#lectures">Explore the lectures <span>↓</span></a><a class="cta" href="#practice">Explore the exercises <span aria-hidden="true">↓</span></a>
+</div>
+</div>
+<figure class="hero-image" style="margin:0"><div class="hero-photo-crop"><img src="assets/course-group.jpg" alt="Course participants together at the NVIDIA offices in Tel Aviv"></div>
+<figcaption class="caption">RL for Real · NVIDIA offices, Tel Aviv · October 2026</figcaption></figure></section><section class="course-overview" id="about" aria-labelledby="about-title">
+<div class="section-head"><div>
+<div class="eyebrow">About the course</div>
+<h2 id="about-title">From foundations to applications.</h2>
+</div></div>
+<p class="overview-lead">RL for Real connects the foundations of reinforcement learning to their practical applications, with in-depth coverage of LLMs and robotics.</p>
+<div class="course-facts">
+<div>
+<h3>What materials are available?</h3>
+<p>Lecture recordings, slides and hands-on code exercises.</p>
+</div>
+<div>
+<h3>What background do I need?</h3>
+<p>Knowledge of machine learning and experience writing ML code. No prior RL experience is required. Some exercises require a GPU, as specified in their instructions.</p>
+</div>
+<div>
+<h3>What language are the materials in?</h3>
+<p>The lecture recordings are in Hebrew. Slides and exercises are in English.</p>
+</div>
+<div>
+<h3>Was the course academically recognized?</h3>
+<p>The original in-person course carried two academic credits at Bar-Ilan University (course 89953-01).</p>
+</div>
+</div>
+<div class="course-motivation">
+<h3>Why we created RL for Real</h3>
+<div>
+<p>Modern RL is central to applications such as LLMs and robotics, but its role is not fully reflected in existing courses. We saw a gap between academia and practice: the algorithms taught in class often cannot be applied directly to real problems.</p>
+<p>We believe that making RL better known and more accessible benefits our companies, the AI research community, and everyone who uses AI technology. We see sharing our experience as both a privilege and a responsibility.</p>
+<aside class="organizer-note" aria-label="Personal perspective from Ido Greenberg"><p>I kept hearing the same questions from ML practitioners: When do we actually need RL? Why is it so different in each use case? My grandfather once said education should keep pace with technology, so I wanted to answer these questions. I was fortunate so many outstanding speakers joined. We wanted to share the science people actually want to learn.</p>
+<p class="note-signature">Ido Greenberg · Course organizer</p></aside>
+</div>
+</div></section>
+<section class="institutions" id="people" aria-labelledby="institutions-title">
+<div class="eyebrow">Industry &amp; academia, together</div>
+<h2 id="institutions-title">The people and institutions behind the course</h2>
+<div class="institution-grid">
+<div class="institution institution-nvidia">
+<div class="logo-box"><img src="assets/logos/nvidia.png" alt="NVIDIA Research Israel"></div>
+<span class="institution-label">NVIDIA Research Israel</span><span class="institution-role"></span>
+</div>
+<div class="institution institution-google">
+<div class="logo-box"><img src="assets/logos/google.png" alt="Google Research"></div>
+<span class="institution-label">Google Research</span><span class="institution-role"> </span>
+</div>
+<div class="institution institution-aai">
+<div class="logo-box"><a href="https://www.doubleai.com/" target="_blank" rel="noopener noreferrer" aria-label="doubleAI website"><img src="assets/logos/doubleai.png" alt="doubleAI" width="295" height="89" class="doubleai-logo"><span class="institution-text-name logo-fallback" hidden="">doubleAI</span></a></div>
+<span class="institution-label">AAI</span><span class="institution-role"> </span>
+</div>
+<div class="institution institution-mentee">
+<div class="logo-box"><img src="assets/logos/mentee-robotics.png" alt="Mentee Robotics"></div>
+<span class="institution-label">Mentee Robotics</span><span class="institution-role"> </span>
+</div>
+<div class="institution institution-bar-ilan">
+<div class="logo-box"><img src="assets/logos/bar-ilan.png" alt="Bar-Ilan University"></div>
+<span class="institution-label">Bar-Ilan University</span><span class="institution-role"> </span>
+</div>
+<div class="institution institution-tau">
+<div class="logo-box"><img src="assets/logos/tel-aviv-university.png" alt="Tel Aviv University"></div>
+<span class="institution-label">Tel Aviv University</span><span class="institution-role"> </span>
+</div>
+<div class="institution institution-technion">
+<div class="logo-box"><img src="assets/logos/technion.png" alt="Technion"></div>
+<span class="institution-label">Technion</span><span class="institution-role"> </span>
+</div>
+</div>
+<div class="teaching-team">
+<h3>Speakers</h3>
+<div class="faculty-grid">
+<article class="faculty-person"><span class="headshot headshot-ido"><span class="portrait-fallback" aria-hidden="true">IG</span><img src="assets/people/ido-greenberg.png" alt="Ido Greenberg" width="80" height="80" loading="lazy" decoding="async"></span><div class="faculty-copy">
+<strong>Ido Greenberg</strong><span>NVIDIA</span>
+</div></article>
+<article class="faculty-person"><span class="headshot"><span class="portrait-fallback" aria-hidden="true">GC</span><img src="assets/people/gal-chechik.jpeg" alt="Gal Chechik" width="80" height="80" loading="lazy" decoding="async"></span><div class="faculty-copy">
+<strong>Gal Chechik</strong><span>NVIDIA · Bar-Ilan University</span>
+</div></article>
+<article class="faculty-person"><span class="headshot"><span class="portrait-fallback" aria-hidden="true">SM</span><img src="assets/people/shie-mannor.jpg" alt="Shie Mannor" width="80" height="80" loading="lazy" decoding="async"></span><div class="faculty-copy">
+<strong>Shie Mannor</strong><span>NVIDIA · Technion</span>
+</div></article>
+<article class="faculty-person"><span class="headshot"><span class="portrait-fallback" aria-hidden="true">GD</span><img src="assets/people/gal-dalal.png" alt="Gal Dalal" width="80" height="80" loading="lazy" decoding="async"></span><div class="faculty-copy">
+<strong>Gal Dalal</strong><span>NVIDIA</span>
+</div></article>
+<article class="faculty-person"><span class="headshot"><span class="portrait-fallback" aria-hidden="true">AH</span><img src="assets/people/assaf-hallak.png" alt="Assaf Hallak" width="80" height="80" loading="lazy" decoding="async"></span><div class="faculty-copy">
+<strong>Assaf Hallak</strong><span>NVIDIA</span>
+</div></article>
+<article class="faculty-person"><span class="headshot"><span class="portrait-fallback" aria-hidden="true">EM</span><img src="assets/people/eli-meirom.jpg" alt="Eli Meirom" width="80" height="80" loading="lazy" decoding="async"></span><div class="faculty-copy">
+<strong>Eli Meirom</strong><span>NVIDIA</span>
+</div></article>
+<article class="faculty-person"><span class="headshot"><span class="portrait-fallback" aria-hidden="true">CT</span><img src="assets/people/chen-tessler.png" alt="Chen Tessler" width="80" height="80" loading="lazy" decoding="async"></span><div class="faculty-copy">
+<strong>Chen Tessler</strong><span>NVIDIA</span>
+</div></article>
+<article class="faculty-person"><span class="headshot"><span class="portrait-fallback" aria-hidden="true">LS</span><img src="assets/people/lior-shani.jpg" alt="Lior Shani" width="80" height="80" loading="lazy" decoding="async"></span><div class="faculty-copy">
+<strong>Lior Shani</strong><span>Google</span>
+</div></article>
+<article class="faculty-person"><span class="headshot"><span class="portrait-fallback" aria-hidden="true">AR</span><img src="assets/people/aviv-rosenberg.jpg" alt="Aviv Rosenberg" width="80" height="80" loading="lazy" decoding="async"></span><div class="faculty-copy">
+<strong>Aviv Rosenberg</strong><span>Google</span>
+</div></article>
+<article class="faculty-person"><span class="headshot"><span class="portrait-fallback" aria-hidden="true">OL</span><img src="assets/people/oran-lang.jpg" alt="Oran Lang" width="80" height="80" loading="lazy" decoding="async"></span><div class="faculty-copy">
+<strong>Oran Lang</strong><span>Google</span>
+</div></article>
+<article class="faculty-person"><span class="headshot"><span class="portrait-fallback" aria-hidden="true">YE</span><img src="assets/people/yonathan-efroni.jpg" alt="Yonathan Efroni" width="80" height="80" loading="lazy" decoding="async"></span><div class="faculty-copy">
+<strong>Yonathan Efroni</strong><span>AAI · Tel Aviv University</span>
+</div></article>
+<article class="faculty-person"><span class="headshot"><span class="portrait-fallback" aria-hidden="true">TS</span><img src="assets/people/tom-shenkar.jpg" alt="Tom Shenkar" width="80" height="80" loading="lazy" decoding="async"></span><div class="faculty-copy">
+<strong>Tom Shenkar</strong><span>Mentee Robotics</span>
+</div></article>
+</div>
+</div></section>
+<section id="lectures"><div class="section-head">
+<div>
+<div class="eyebrow">The curriculum</div>
+<h2>Lectures &amp; materials</h2>
+</div>
+<a class="resource resource-video" href="https://www.youtube.com/playlist?list=PLdDikXPHgzA4" target="_blank" rel="noopener noreferrer" aria-label="All lecture recordings on YouTube (playlist)">All recordings (YouTube) <span>↗</span></a>
+</div>
+<p class="recording-note"><strong>Recording note:</strong> audience questions and comments are mostly inaudible. Slides are available for every lecture.</p>
+<div class="tools"><input id="search" type="search" placeholder="Find a topic, speaker or institution…" aria-label="Search lectures"></div>
+<div id="lecture-list">
+<article class="lecture" data-search="Introduction to Real-World RL Ido Greenberg NVIDIA Why reinforcement learning, and when should you use it?" id="lecture-01" data-lecture-numbers="01"><span class="number">01</span><div>
+<h3>Introduction to Real-World RL</h3>
+<p class="speaker">Ido Greenberg<span class="speaker-affiliation">NVIDIA</span></p>
+<p class="desc">Why reinforcement learning, and when should you use it?</p>
+</div>
+<div class="resources">
+<a class="resource resource-video" href="https://www.youtube.com/watch?v=JbPKHWuxqIw" target="_blank" rel="noopener noreferrer" aria-label="Recording of lecture 1: Introduction to Real-World RL (YouTube)">Recording <span>↗</span></a><a class="resource" href="slides/01.pdf" target="_blank" rel="noopener" aria-label="Slides for Introduction to Real-World RL">Slides <span>↗</span></a>
+</div></article><article class="lecture" data-search="Foundations of Reinforcement Learning Shie Mannor NVIDIA · Technion Tabular methods, value functions, and the foundations of sequential decision making." id="lecture-02" data-lecture-numbers="02"><span class="number">02</span><div>
+<h3>Foundations of Reinforcement Learning</h3>
+<p class="speaker">Shie Mannor<span class="speaker-affiliation">NVIDIA · Technion</span></p>
+<p class="desc">Tabular methods, value functions, and the foundations of sequential decision making.</p>
+</div>
+<div class="resources">
+<a class="resource resource-video" href="https://www.youtube.com/watch?v=-CGbyVZrKIw" target="_blank" rel="noopener noreferrer" aria-label="Recording of lecture 2: Foundations of Reinforcement Learning (YouTube)">Recording <span>↗</span></a><a class="resource" href="slides/02.pdf" target="_blank" rel="noopener" aria-label="Slides for Foundations of Reinforcement Learning">Slides <span>↗</span></a>
+</div></article><article class="lecture" data-search="Deep RL I Ido Greenberg NVIDIA From tabular methods to deep networks, policy gradients, and actor-critic methods." id="lecture-03" data-lecture-numbers="03"><span class="number">03</span><div>
+<h3>Deep RL I</h3>
+<p class="speaker">Ido Greenberg<span class="speaker-affiliation">NVIDIA</span></p>
+<p class="desc">From tabular methods to deep networks, policy gradients, and actor-critic methods.</p>
+</div>
+<div class="resources">
+<a class="resource resource-video" href="https://www.youtube.com/watch?v=TYyYpZ7NuOE" target="_blank" rel="noopener noreferrer" aria-label="Recording of lecture 3: Deep RL I (YouTube)">Recording <span>↗</span></a><a class="resource" href="slides/03.pdf" target="_blank" rel="noopener" aria-label="Slides for Deep RL I">Slides <span>↗</span></a>
+</div></article><article class="lecture" data-search="Deep RL II Gal Dalal NVIDIA Trust regions, PPO, and policy gradients today." id="lecture-04" data-lecture-numbers="04"><span class="number">04</span><div>
+<h3>Deep RL II</h3>
+<p class="speaker">Gal Dalal<span class="speaker-affiliation">NVIDIA</span></p>
+<p class="desc">Trust regions, PPO, and policy gradients today.</p>
+</div>
+<div class="resources">
+<a class="resource resource-video" href="https://www.youtube.com/watch?v=8AOjpZhgj68" target="_blank" rel="noopener noreferrer" aria-label="Recording of lecture 4: Deep RL II (YouTube)">Recording <span>↗</span></a><a class="resource" href="slides/04.pdf" target="_blank" rel="noopener" aria-label="Slides for Deep RL II">Slides <span>↗</span></a>
+</div></article><article class="lecture" data-search="Practical RL Design Ido Greenberg NVIDIA How real applications drive the problem formulation and algorithm design." id="lecture-05" data-lecture-numbers="05"><span class="number">05</span><div>
+<h3>Practical RL Design</h3>
+<p class="speaker">Ido Greenberg<span class="speaker-affiliation">NVIDIA</span></p>
+<p class="desc">How real applications drive the problem formulation and algorithm design.</p>
+</div>
+<div class="resources">
+<a class="resource resource-video" href="https://www.youtube.com/watch?v=hzQSy9eVevI" target="_blank" rel="noopener noreferrer" aria-label="Recording of lecture 5: Practical RL Design (YouTube)">Recording <span>↗</span></a><a class="resource" href="slides/05.pdf" target="_blank" rel="noopener" aria-label="Slides for Practical RL Design">Slides <span>↗</span></a>
+</div></article><article class="lecture" data-search="Model-Based Deep RL Assaf Hallak NVIDIA Learning models of the environment to support better decisions." id="lecture-06" data-lecture-numbers="06"><span class="number">06</span><div>
+<h3>Model-Based Deep RL</h3>
+<p class="speaker">Assaf Hallak<span class="speaker-affiliation">NVIDIA</span></p>
+<p class="desc">Learning models of the environment to support better decisions.</p>
+</div>
+<div class="resources">
+<a class="resource resource-video" href="https://www.youtube.com/watch?v=XLf91j2rSCQ" target="_blank" rel="noopener noreferrer" aria-label="Recording of lecture 6: Model-Based Deep RL (YouTube)">Recording <span>↗</span></a><a class="resource" href="slides/06.pdf" target="_blank" rel="noopener" aria-label="Slides for Model-Based Deep RL">Slides <span>↗</span></a>
+</div></article><article class="lecture" data-search="Bandits &amp; Exploration Yonathan Efroni AAI · Tel Aviv University From multi-armed bandits and optimism to deep exploration." id="lecture-07-08" data-lecture-numbers="07 08"><span class="number">07–08</span><div>
+<h3>Bandits &amp; Exploration</h3>
+<p class="speaker">Yonathan Efroni<span class="speaker-affiliation">AAI · Tel Aviv University</span></p>
+<p class="desc">From multi-armed bandits and optimism to deep exploration.</p>
+</div>
+<div class="resources">
+<a class="resource resource-video" href="https://www.youtube.com/watch?v=LcHbI9o9egw" target="_blank" rel="noopener noreferrer" aria-label="Recording of lecture 7: Bandits &amp; Exploration (YouTube)">Recording 7 <span>↗</span></a><a class="resource resource-video" href="https://www.youtube.com/watch?v=lMAkhu9Po-Q" target="_blank" rel="noopener noreferrer" aria-label="Recording of lecture 8: Bandits &amp; Exploration (YouTube)">Recording 8 <span>↗</span></a><a class="resource" href="slides/07-08.pdf" target="_blank" rel="noopener" aria-label="Slides for Bandits &amp; Exploration">Slides <span>↗</span></a><a class="resource" href="notebooks/08-exploration.ipynb" download>Notebook (.ipynb) <span>↓</span></a>
+</div></article><article class="lecture" data-search="RL for Optimization Eli Meirom NVIDIA Learning to solve combinatorial problems, with vehicle routing as a case study." id="lecture-09" data-lecture-numbers="09"><span class="number">09</span><div>
+<h3>RL for Optimization</h3>
+<p class="speaker">Eli Meirom<span class="speaker-affiliation">NVIDIA</span></p>
+<p class="desc">Learning to solve combinatorial problems, with vehicle routing as a case study.</p>
+</div>
+<div class="resources">
+<a class="resource resource-video" href="https://www.youtube.com/watch?v=q5pHNIAg75I" target="_blank" rel="noopener noreferrer" aria-label="Recording of lecture 9: RL for Optimization (YouTube)">Recording <span>↗</span></a><a class="resource" href="slides/09.pdf" target="_blank" rel="noopener" aria-label="Slides for RL for Optimization">Slides <span>↗</span></a>
+</div></article><article class="lecture" data-search="RL Beyond the Lab Gal Dalal NVIDIA Real-world applications in datacenter networking." id="lecture-10" data-lecture-numbers="10"><span class="number">10</span><div>
+<h3>RL Beyond the Lab</h3>
+<p class="speaker">Gal Dalal<span class="speaker-affiliation">NVIDIA</span></p>
+<p class="desc">Real-world applications in datacenter networking.</p>
+</div>
+<div class="resources">
+<a class="resource resource-video" href="https://www.youtube.com/watch?v=8CvjHWqAnj4" target="_blank" rel="noopener noreferrer" aria-label="Recording of lecture 10: RL Beyond the Lab (YouTube)">Recording <span>↗</span></a><a class="resource" href="slides/10.pdf" target="_blank" rel="noopener" aria-label="Slides for RL Beyond the Lab">Slides <span>↗</span></a>
+</div></article><article class="lecture" data-search="RL for Large Language Models Lior Shani Google RLHF, verifiable rewards, credit assignment, and agentic RL." id="lecture-11-12" data-lecture-numbers="11 12"><span class="number">11–12</span><div>
+<h3>RL for Large Language Models</h3>
+<p class="speaker">Lior Shani<span class="speaker-affiliation">Google</span></p>
+<p class="desc">RLHF, verifiable rewards, credit assignment, and agentic RL.</p>
+</div>
+<div class="resources">
+<a class="resource resource-video" href="https://www.youtube.com/watch?v=Jdnmv2N0sdg" target="_blank" rel="noopener noreferrer" aria-label="Recording of lecture 11: RL for Large Language Models (YouTube)">Recording 11 <span>↗</span></a><a class="resource resource-video" href="https://www.youtube.com/watch?v=iOX6_-ICmrA" target="_blank" rel="noopener noreferrer" aria-label="Recording of lecture 12: RL for Large Language Models (YouTube)">Recording 12 <span>↗</span></a><a class="resource" href="slides/11-12.pdf" target="_blank" rel="noopener" aria-label="Slides for RL for Large Language Models">Slides <span>↗</span></a>
+</div></article><article class="lecture" data-search="RL for Diffusion Models Aviv Rosenberg Google Formulating and optimizing generative modeling tasks with RL." id="lecture-13" data-lecture-numbers="13"><span class="number">13</span><div>
+<h3>RL for Diffusion Models</h3>
+<p class="speaker">Aviv Rosenberg<span class="speaker-affiliation">Google</span></p>
+<p class="desc">Formulating and optimizing generative modeling tasks with RL.</p>
+</div>
+<div class="resources">
+<a class="resource resource-video" href="https://www.youtube.com/watch?v=X7v2bjCjeuM" target="_blank" rel="noopener noreferrer" aria-label="Recording of lecture 13: RL for Diffusion Models (YouTube)">Recording <span>↗</span></a><a class="resource" href="slides/13.pdf" target="_blank" rel="noopener" aria-label="Slides for RL for Diffusion Models">Slides <span>↗</span></a>
+</div></article><article class="lecture" data-search="From RL to Robotics Chen Tessler NVIDIA A hands-on introduction to making robots move." id="lecture-14" data-lecture-numbers="14"><span class="number">14</span><div>
+<h3>From RL to Robotics</h3>
+<p class="speaker">Chen Tessler<span class="speaker-affiliation">NVIDIA</span></p>
+<p class="desc">A hands-on introduction to making robots move.</p>
+</div>
+<div class="resources">
+<a class="resource resource-video" href="https://www.youtube.com/watch?v=D-dxdW3AeDA" target="_blank" rel="noopener noreferrer" aria-label="Recording of lecture 14: From RL to Robotics (YouTube)">Recording <span>↗</span></a><a class="resource" href="slides/14.pdf" target="_blank" rel="noopener" aria-label="Slides for From RL to Robotics">Slides <span>↗</span></a>
+</div></article><article class="lecture" data-search="RL for Robotics Tom Shenkar Mentee Robotics" id="lecture-15" data-lecture-numbers="15"><span class="number">15</span><div>
+<h3>RL for Robotics</h3>
+<p class="speaker">Tom Shenkar<span class="speaker-affiliation">Mentee Robotics</span></p>
+</div>
+<div class="resources"><span class="pending unavailable">Materials not available</span></div></article>
+</div>
+<p id="empty" class="empty" hidden role="status">No lectures match your search.</p></section><section class="practice" id="practice" aria-labelledby="practice-title">
+<div class="practice-heading">
+<div class="eyebrow">Hands-on learning</div>
+<h2 id="practice-title">Build it yourself.</h2>
+<p>Three coding exercises to accompany the lectures.</p>
+</div>
+<div class="exercise-grid">
+<article class="exercise"><h3><a href="https://github.com/NVlabs/rl-for-real/tree/main/ex1-ppo">PPO</a></h3>
+<p>Implement and run a state-of-the-art RL algorithm.</p>
+<a class="exercise-link" href="https://github.com/NVlabs/rl-for-real/tree/main/ex1-ppo" aria-label="Open the PPO exercise">Open exercise <span aria-hidden="true">↗</span></a></article>
+<article class="exercise"><h3><a href="https://github.com/NVlabs/rl-for-real/tree/main/ex2-llm-sentiment">LLM sentiment</a></h3>
+<p>Make your GPT model view life in a more positive (or negative) light.</p>
+<a class="exercise-link" href="https://github.com/NVlabs/rl-for-real/tree/main/ex2-llm-sentiment" aria-label="Open the LLM sentiment exercise">Open exercise <span aria-hidden="true">↗</span></a></article>
+<article class="exercise"><h3><a href="https://github.com/NVlabs/rl-for-real/tree/main/ex3-llm-reasoning">LLM reasoning</a></h3>
+<p>How high can you bring the model score on a set of reasoning tasks?</p>
+<a class="exercise-link" href="https://github.com/NVlabs/rl-for-real/tree/main/ex3-llm-reasoning" aria-label="Open the LLM reasoning exercise">Open exercise <span aria-hidden="true">↗</span></a></article>
+</div></section><section class="course-gallery" aria-labelledby="gallery-title"><div class="section-head"><div>
+<div class="eyebrow">From the classroom</div>
+<h2 id="gallery-title">Five days together.</h2>
+</div></div>
+<div class="photo-carousel" role="region" aria-roledescription="carousel" aria-label="Course photographs" tabindex="0">
+<div class="photo-stage">
+<figure class="photo-slide is-active" id="course-photo-1" role="group" aria-roledescription="slide" aria-label="1 of 8" aria-hidden="false"><img src="assets/gallery/20261011_163023.jpg" alt="Participants working through an exercise at NVIDIA’s Tel Aviv offices" width="4000" height="2252" loading="eager" decoding="async"></figure><figure class="photo-slide" id="course-photo-2" role="group" aria-roledescription="slide" aria-label="2 of 8" aria-hidden="true" inert=""><img src="assets/gallery/20261012_125847.jpg" alt="A speaker explains a diagram during a reinforcement learning lecture" width="4000" height="2252" loading="lazy" decoding="async"></figure><figure class="photo-slide" id="course-photo-3" role="group" aria-roledescription="slide" aria-label="3 of 8" aria-hidden="true" inert=""><img src="assets/gallery/20261012_163930.jpg" alt="A lecture brings research ideas into the classroom" width="4000" height="2252" loading="lazy" decoding="async"></figure><figure class="photo-slide" id="course-photo-4" role="group" aria-roledescription="slide" aria-label="4 of 8" aria-hidden="true" inert=""><img src="assets/gallery/20261013_113733.jpg" alt="Participants and a speaker discussing reinforcement learning" width="4000" height="2252" loading="lazy" decoding="async"></figure><figure class="photo-slide" id="course-photo-5" role="group" aria-roledescription="slide" aria-label="5 of 8" aria-hidden="true" inert=""><img src="assets/gallery/20261013_115952.jpg" alt="A speaker presents to the RL for Real class" width="4000" height="2252" loading="lazy" decoding="async"></figure><figure class="photo-slide" id="course-photo-6" role="group" aria-roledescription="slide" aria-label="6 of 8" aria-hidden="true" inert=""><img src="assets/gallery/20261015_163651.jpg" alt="A robotics lecture during the course" width="4000" height="2252" loading="lazy" decoding="async"></figure><figure class="photo-slide" id="course-photo-7" role="group" aria-roledescription="slide" aria-label="7 of 8" aria-hidden="true" inert=""><img src="assets/gallery/20261012_143035.jpg" alt="A moment from the classroom during a course lecture" width="3392" height="2544" loading="lazy" decoding="async"></figure><figure class="photo-slide" id="course-photo-8" role="group" aria-roledescription="slide" aria-label="8 of 8" aria-hidden="true" inert=""><img src="assets/gallery/20261015_170501.jpg" alt="The course group at NVIDIA’s offices, with Tel Aviv in the background" width="4000" height="2252" loading="lazy" decoding="async"></figure>
+</div>
+<div class="carousel-controls">
+<div class="carousel-buttons">
+<button type="button" class="photo-prev" aria-label="Previous photo">←</button><button type="button" class="photo-toggle" aria-label="Pause photo slideshow">Pause</button><button type="button" class="photo-next" aria-label="Next photo">→</button>
+</div>
+<div class="photo-dots" aria-label="Choose a photo">
+<button type="button" class="photo-dot" aria-label="Show photo 1" aria-controls="course-photo-1" aria-current="true"></button><button type="button" class="photo-dot" aria-label="Show photo 2" aria-controls="course-photo-2" aria-current="false"></button><button type="button" class="photo-dot" aria-label="Show photo 3" aria-controls="course-photo-3" aria-current="false"></button><button type="button" class="photo-dot" aria-label="Show photo 4" aria-controls="course-photo-4" aria-current="false"></button><button type="button" class="photo-dot" aria-label="Show photo 5" aria-controls="course-photo-5" aria-current="false"></button><button type="button" class="photo-dot" aria-label="Show photo 6" aria-controls="course-photo-6" aria-current="false"></button><button type="button" class="photo-dot" aria-label="Show photo 7" aria-controls="course-photo-7" aria-current="false"></button><button type="button" class="photo-dot" aria-label="Show photo 8" aria-controls="course-photo-8" aria-current="false"></button>
+</div>
+<span class="photo-count" aria-hidden="true">1 / 8</span>
+</div>
+<p class="visually-hidden photo-status" role="status" aria-live="polite"></p>
+</div></section></main><footer><span>RL for Real · 2026</span><a href="#">Back to top ↑</a></footer>
+</div>
+<script>// A failed external portrait never hides the speaker's name or profile link.
+document.querySelectorAll('.headshot img').forEach(img => {
+  const showFallback = () => { img.hidden = true; };
+  img.addEventListener('error', showFallback);
+  // Lazy images can be complete before their first fetch: do not hide them yet.
+  if (img.complete && img.naturalWidth > 0) img.hidden = false;
+});
+
+const search = document.querySelector('#search');
+const lectures = [...document.querySelectorAll('.lecture')];
+function updateLectures() {
+  let visible = 0;
+  const query = search.value.toLowerCase().trim();
+  lectures.forEach(row => {
+    row.hidden = !row.dataset.search.toLowerCase().includes(query);
+    if (!row.hidden) visible++;
+  });
+  document.querySelector('#empty').hidden = visible > 0;
+}
+search.addEventListener('input', updateLectures);
+
+const carousel = document.querySelector('.photo-carousel');
+const slides = [...carousel.querySelectorAll('.photo-slide')];
+const dots = [...carousel.querySelectorAll('.photo-dot')];
+const toggle = carousel.querySelector('.photo-toggle');
+const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+let current = 0;
+let paused = motion.matches;
+let hovering = false;
+let inView = false;
+let timer;
+let toggleWasPaused;
+
+function showPhoto(index, manual = false) {
+  current = (index + slides.length) % slides.length;
+  slides.forEach((slide, i) => {
+    const active = i === current;
+    slide.classList.toggle('is-active', active);
+    slide.setAttribute('aria-hidden', String(!active));
+    slide.inert = !active;
+    if (active) slide.querySelector('img').loading = 'eager';
+  });
+  // Preload the next frame before rotation to prevent a blank transition.
+  slides[(current + 1) % slides.length].querySelector('img').loading = 'eager';
+  dots.forEach((dot, i) => dot.setAttribute('aria-current', String(i === current)));
+  carousel.querySelector('.photo-count').textContent = `${current + 1} / ${slides.length}`;
+  if (manual) carousel.querySelector('.photo-status').textContent = `Photo ${current + 1} of ${slides.length}: ${slides[current].querySelector('img').alt}`;
+}
+function schedule() {
+  clearTimeout(timer);
+  toggle.textContent = paused ? 'Play' : 'Pause';
+  toggle.setAttribute('aria-label', paused ? 'Play photo slideshow' : 'Pause photo slideshow');
+  if (!paused && !hovering && inView && !document.hidden) {
+    timer = setTimeout(() => { showPhoto(current + 1); schedule(); }, 6000);
+  }
+}
+function selectPhoto(index) {
+  paused = true;
+  showPhoto(index, true);
+  schedule();
+}
+carousel.querySelector('.photo-prev').addEventListener('click', () => selectPhoto(current - 1));
+carousel.querySelector('.photo-next').addEventListener('click', () => selectPhoto(current + 1));
+dots.forEach((dot, i) => dot.addEventListener('click', () => selectPhoto(i)));
+// Preserve the state before pointer focus stops rotation, so clicking Pause
+// does not accidentally start it again in the following click event.
+toggle.addEventListener('pointerdown', () => { toggleWasPaused = paused; });
+toggle.addEventListener('click', event => {
+  paused = event.detail > 0 && toggleWasPaused !== undefined ? !toggleWasPaused : !paused;
+  toggleWasPaused = undefined;
+  schedule();
+});
+carousel.addEventListener('mouseenter', () => { hovering = true; schedule(); });
+carousel.addEventListener('mouseleave', () => { hovering = false; schedule(); });
+// Focus stops rotation until the visitor explicitly presses Play.
+carousel.addEventListener('focusin', () => { paused = true; schedule(); });
+carousel.addEventListener('keydown', event => {
+  if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+    event.preventDefault();
+    selectPhoto(current + (event.key === 'ArrowRight' ? 1 : -1));
+  }
+});
+document.addEventListener('visibilitychange', schedule);
+motion.addEventListener('change', event => { if (event.matches) { paused = true; schedule(); } });
+new IntersectionObserver(entries => { inView = entries[0].isIntersecting; schedule(); }, { threshold: 0.3 }).observe(carousel);
+schedule();
+
+const companyLogo = document.querySelector('.doubleai-logo');
+companyLogo.addEventListener('error', () => {
+  companyLogo.hidden = true;
+  document.querySelector('.logo-fallback').hidden = false;
+});
+if (companyLogo.complete && !companyLogo.naturalWidth) companyLogo.dispatchEvent(new Event('error'));
+slides[1 % slides.length].querySelector('img').loading = 'eager';
+</script>
+</body>
+</html>

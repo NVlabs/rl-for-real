@@ -1,0 +1,19 @@
+RL for Real: course website and materials
+Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+Website source code (HTML, CSS, JavaScript) is licensed under the Apache
+License, Version 2.0 (see LICENSE).
+
+The code exercises (ex1-ppo/, ex2-llm-sentiment/, ex3-llm-reasoning/) are
+licensed under the Apache License, Version 2.0. Each folder has its own
+LICENSE and a NOTICE that lists its third-party dependencies.
+
+Lecture slides (docs/slides/), the exploration notebook (docs/notebooks/) and
+the lecture recordings linked from the website are licensed under the Creative
+Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0,
+https://creativecommons.org/licenses/by-nc/4.0/).
+
+Excluded from the licenses above: logos, speaker portraits and photographs
+(docs/assets/). They remain the property of their respective owners and may
+not be reused without permission. See logo-sources.json and
+portrait-sources.json for their sources.

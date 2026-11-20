@@ -1,0 +1,22 @@
+RL-for-Real course exercises: rl-for-real
+Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This project is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Third-party software
+--------------------
+This repository does not include, copy, modify or redistribute any third-party
+source code, binaries, model weights or datasets. All files are authored by NVIDIA.
+
+The dependencies listed in requirements.txt are installed separately by the user
+from their upstream sources and are governed by their own licenses:
+
+- torch: BSD-3-Clause (https://github.com/pytorch/pytorch/blob/main/LICENSE)
+- transformers: Apache-2.0 (https://github.com/huggingface/transformers/blob/main/LICENSE)
+- accelerate: Apache-2.0 (https://github.com/huggingface/accelerate/blob/main/LICENSE)
+- trl: Apache-2.0 (https://github.com/huggingface/trl/blob/main/LICENSE)
+- peft: Apache-2.0 (https://github.com/huggingface/peft/blob/main/LICENSE)
+- reasoning-gym: Apache-2.0 (https://github.com/open-thought/reasoning-gym/blob/main/LICENSE)
+- wandb: MIT (https://github.com/wandb/wandb/blob/main/LICENSE)
+- tqdm: MPL-2.0 AND MIT (https://github.com/tqdm/tqdm/blob/master/LICENCE)
+- PyYAML: MIT (https://github.com/yaml/pyyaml/blob/main/LICENSE)
